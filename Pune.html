@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pune City - Four Zone Division (North, South, East, West)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            padding: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .header h1 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+        .header p {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .main-content {
+            display: block;
+            text-align: center;
+        }
+        .svg-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        svg {
+            max-width: 300px;
+            height: auto;
+            filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.1));
+        }
+        .legend {
+            padding: 0;
+        }
+        .legend h2 {
+            color: #333;
+            font-size: 1.1em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+        }
+        .zone {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 4px solid;
+            font-size: 0.85em;
+        }
+        
+        .zone.north {
+            background: rgba(100, 150, 255, 0.1);
+            border-color: #6496ff;
+        }
+        
+        .zone.south {
+            background: rgba(50, 200, 100, 0.1);
+            border-color: #268746;
+        }
+        
+        .zone.east {
+            background: rgba(255, 200, 50, 0.1);
+            border-color: #ffc832;
+        }
+        
+        .zone.west {
+            background: rgba(255, 100, 100, 0.1);
+            border-color: #ff6464;
+        }
+        
+        .zone h3 {
+            margin: 0 0 5px 0;
+            color: #333;
+            font-size: 1em;
+        }
+        .zone-info {
+            color: #555;
+            font-size: 0.8em;
+            line-height: 1.4;
+            margin-bottom: 5px;
+        }
+        .zone-info strong {
+            color: #333;
+        }
+        .pincodes {
+            margin-top: 5px;
+            padding-top: 5px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 0.75em;
+            color: #666;
+        }
+        .pincode-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+            margin-top: 3px;
+        }
+        .pincode {
+            background: white;
+            padding: 2px 5px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            font-weight: bold;
+            font-size: 0.7em;
+        }
+        
+        .stats {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #eee;
+        }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .stat {
+            background: #f5f5f5;
+            padding: 8px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .stat-label {
+            font-size: 0.75em;
+            color: #666;
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗺️ PUNE CITY - FOUR ZONE DIVISION</h1>
+            <p>Geographical Organization: North, South, East, West</p>
+        </div>
+        
+        <div class="main-content">
+            <div class="svg-container">
+                <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" width="300" height="300">
+                    <!-- Background -->
+                    <rect width="600" height="600" fill="#f0f0f0" rx="10"/>
+                    
+                    <!-- NORTH ZONE (Top) - Blue -->
+                    <path d="M 300 300 L 300 50 A 250 250 0 0 1 500 150 Z" fill="#6496ff" opacity="0.15" stroke="#6496ff" stroke-width="2"/>
+                    
+                    <!-- SOUTH ZONE (Bottom) - Green -->
+                    <path d="M 300 300 L 100 450 A 250 250 0 0 1 500 450 Z" fill="#32c864" opacity="0.15" stroke="#32c864" stroke-width="2"/>
+                    
+                    <!-- EAST ZONE (Right) - Yellow -->
+                    <path d="M 300 300 L 500 150 A 250 250 0 0 1 500 450 Z" fill="#ffc832" opacity="0.15" stroke="#ffc832" stroke-width="2"/>
+                    
+                    <!-- WEST ZONE (Left) - Red -->
+                    <path d="M 300 300 L 100 150 A 250 250 0 0 0 100 450 Z" fill="#ff6464" opacity="0.15" stroke="#ff6464" stroke-width="2"/>
+                    
+                    <!-- Center Circle (Peth Areas - White) -->
+                    <circle cx="300" cy="300" r="80" fill="white" stroke="#999" stroke-width="2" stroke-dasharray="5,5"/>
+                    
+                    <!-- Outer Circle Border -->
+                    <circle cx="300" cy="300" r="250" fill="none" stroke="#333" stroke-width="3"/>
+                    
+                    <!-- Zone Boundaries (Cross Lines) -->
+                    <line x1="300" y1="50" x2="300" y2="550" stroke="#333" stroke-width="2" stroke-dasharray="3,3"/>
+                    <line x1="50" y1="300" x2="550" y2="300" stroke="#333" stroke-width="2" stroke-dasharray="3,3"/>
+                    
+                    <!-- NORTH ZONE Label and Areas -->
+                    <text x="300" y="100" text-anchor="middle" font-size="24" font-weight="bold" fill="#2563db">NORTH</text>
+                    <text x="300" y="130" text-anchor="middle" font-size="13" fill="#1e40af" font-weight="600">Khadki • Aundh • Pimpri</text>
+                    <text x="300" y="148" text-anchor="middle" font-size="13" fill="#1e40af" font-weight="600">Chinchwad • Bhosari • Nigdi</text>
+                    <text x="300" y="166" text-anchor="middle" font-size="11" fill="#3b82f6">16 Pincodes</text>
+                    
+                    <!-- SOUTH ZONE Label and Areas -->
+                    <text x="300" y="520" text-anchor="middle" font-size="24" font-weight="bold" fill="#16a34a">SOUTH</text>
+                    <text x="300" y="490" text-anchor="middle" font-size="13" fill="#166534" font-weight="600">Peths • Parvati • Katraj</text>
+                    <text x="300" y="472" text-anchor="middle" font-size="13" fill="#166534" font-weight="600">Dhankawadi • Sinhagad Rd</text>
+                    <text x="300" y="454" text-anchor="middle" font-size="11" fill="#22c55e">12 Pincodes</text>
+                    
+                    <!-- EAST ZONE Label and Areas -->
+                    <text x="480" y="300" text-anchor="middle" font-size="24" font-weight="bold" fill="#ca8a04">EAST</text>
+                    <text x="480" y="330" text-anchor="middle" font-size="13" fill="#92400e" font-weight="600">Camp • Yerawada • Viman</text>
+                    <text x="480" y="348" text-anchor="middle" font-size="13" fill="#92400e" font-weight="600">Hadapsar • Mundhwa • Wagholi</text>
+                    <text x="480" y="366" text-anchor="middle" font-size="11" fill="#eab308">10 Pincodes</text>
+                    
+                    <!-- WEST ZONE Label and Areas -->
+                    <text x="120" y="300" text-anchor="middle" font-size="24" font-weight="bold" fill="#dc2626">WEST</text>
+                    <text x="120" y="330" text-anchor="middle" font-size="13" fill="#7f1d1d" font-weight="600">Deccan • Shivajinagar</text>
+                    <text x="120" y="348" text-anchor="middle" font-size="13" fill="#7f1d1d" font-weight="600">Kothrud • Baner • Wakad</text>
+                    <text x="120" y="366" text-anchor="middle" font-size="11" fill="#f87171">13 Pincodes</text>
+                    
+                    <!-- CENTER LABEL -->
+                    <text x="300" y="305" text-anchor="middle" font-size="12" fill="#666" font-weight="bold">CITY CENTER</text>
+                    <text x="300" y="320" text-anchor="middle" font-size="10" fill="#999">(Peth Areas)</text>
+                    
+                    <!-- Compass Rose -->
+                    <g transform="translate(40, 40)">
+                        <circle cx="0" cy="0" r="15" fill="white" stroke="#999" stroke-width="1"/>
+                        <text x="0" y="-8" text-anchor="middle" font-size="8" font-weight="bold" fill="#2563db">N</text>
+                        <text x="8" y="3" text-anchor="middle" font-size="8" font-weight="bold" fill="#ca8a04">E</text>
+                        <text x="0" y="12" text-anchor="middle" font-size="8" font-weight="bold" fill="#16a34a">S</text>
+                        <text x="-8" y="3" text-anchor="middle" font-size="8" font-weight="bold" fill="#dc2626">W</text>
+                    </g>
+                </svg>
+            </div>
+            
+            <div class="legend">
+                <h2>Zone Details</h2>
+
+                <!-- WEST ZONE -->
+                <div class="zone west">
+                    <h3>🔴 WEST ZONE</h3>
+                    <div class="zone-info">
+                        <strong>Areas:</strong> Deccan Gymkhana, Shivajinagar, Model Colony, Wakdewadi, Bavdhan, Warje Malwadi, Karve Nagar, Thergaon/Tathawade, Kothrud, Baner/Balewadi, Anand Nagar, Wakad/Hinjawadi, Warje/NDA Road
+                        <br><strong>Character:</strong> Established residential, education belt, IT suburbs, mixed-use corridors
+                    </div>
+                    <div class="pincodes">
+                        <strong>Pincodes (13):</strong>
+                        <div class="pincode-list">
+                            <div class="pincode">411004</div><div class="pincode">411005</div><div class="pincode">411016</div>
+                            <div class="pincode">411020</div><div class="pincode">411021</div><div class="pincode">411022</div>
+                            <div class="pincode">411023</div><div class="pincode">411033</div><div class="pincode">411038</div>
+                            <div class="pincode">411045</div><div class="pincode">411052</div><div class="pincode">411057</div>
+                            <div class="pincode">411058</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SOUTH ZONE -->
+                <div class="zone south">
+                    <h3>🟢 SOUTH ZONE</h3>
+                    <div class="zone-info">
+                        <strong>Areas:</strong> Budhwar Peth/Raviwar Peth, Parvati, Wanowrie/Salisbury Park, Balaji Nagar/Dhankawadi, Market Yard, Pune R.S./Mangalwar Peth, Vadgaon Budruk, Swargate, Dhankawadi, Katraj, NIBM/Kondhwa, Sinhagad Road
+                        <br><strong>Character:</strong> Historic core, markets, educational hubs, dense mixed-use neighborhoods
+                    </div>
+                    <div class="pincodes">
+                        <strong>Pincodes (12):</strong>
+                        <div class="pincode-list">
+                            <div class="pincode">411002</div><div class="pincode">411009</div><div class="pincode">411024</div>
+                            <div class="pincode">411030</div><div class="pincode">411037</div><div class="pincode">411040</div>
+                            <div class="pincode">411041</div><div class="pincode">411042</div><div class="pincode">411043</div>
+                            <div class="pincode">411046</div><div class="pincode">411048</div><div class="pincode">411051</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NORTH ZONE -->
+                <div class="zone north">
+                    <h3>🔵 NORTH ZONE</h3>
+                    <div class="zone-info">
+                        <strong>Areas:</strong> Khadki, Aundh, NCL Pashan, Dighi, Pimpri Colony, Pimpri, Chinchwad, Bhosari MIDC, Pimple Saudagar, Kasarwadi, Akurdi, Bhosari, Nigdi Pradhikaran, Vishrantwadi, Pimple Gurav, Chikhali/Talawade
+                        <br><strong>Character:</strong> Industrial-IT belt, high-density housing, growing commercial corridors
+                    </div>
+                    <div class="pincodes">
+                        <strong>Pincodes (16):</strong>
+                        <div class="pincode-list">
+                            <div class="pincode">411003</div><div class="pincode">411007</div><div class="pincode">411008</div>
+                            <div class="pincode">411015</div><div class="pincode">411017</div><div class="pincode">411018</div>
+                            <div class="pincode">411019</div><div class="pincode">411026</div><div class="pincode">411027</div>
+                            <div class="pincode">411034</div><div class="pincode">411035</div><div class="pincode">411039</div>
+                            <div class="pincode">411044</div><div class="pincode">411047</div><div class="pincode">411061</div>
+                            <div class="pincode">411062</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EAST ZONE -->
+                <div class="zone east">
+                    <h3>🟡 EAST ZONE</h3>
+                    <div class="zone-info">
+                        <strong>Areas:</strong> Camp/Bund Garden, Yerawada, Ghorpadi, Yerawada Shastri Nagar, Hadapsar Mundhwa, Viman Nagar/Kharadi, Hadapsar, Airport/Lohegaon, Mundhwa, Hadapsar Industrial/Ramtekdi, Wagholi
+                        <br><strong>Character:</strong> Premium lifestyle, airport vicinity, IT-business parks, logistics corridors
+                    </div>
+                    <div class="pincodes">
+                        <strong>Pincodes (11):</strong>
+                        <div class="pincode-list">
+                            <div class="pincode">411001</div><div class="pincode">411006</div><div class="pincode">411011</div>
+                            <div class="pincode">411012</div><div class="pincode">411013</div><div class="pincode">411014</div>
+                            <div class="pincode">411028</div><div class="pincode">411032</div><div class="pincode">411036</div>
+                            <div class="pincode">411060</div><div class="pincode">412207</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="stats">
+                    <strong style="color: #333; font-size: 0.9em;">Statistics</strong>
+                    <div class="stat-grid">
+                        <div class="stat">
+                            <div class="stat-number" style="color: #6496ff;">16</div>
+                            <div class="stat-label">North</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" style="color: #ff6464;">13</div>
+                            <div class="stat-label">West</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" style="color: #ffc832;">11</div>
+                            <div class="stat-label">East</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" style="color: #32c864;">12</div>
+                            <div class="stat-label">South</div>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(0,0,0,0.1);">
+                        <strong style="color: #333; font-size: 0.9em;">
+                            Total: 52 Unique Pincodes | Patners EcoSystem 
+                        </strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+ 
